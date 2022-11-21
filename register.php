@@ -16,40 +16,51 @@
     <div class="container-fluid py-2 h-100">
         <div class="row align-items-center justify-content-center">
             <div class="col-md-6">
-                <form method="post">
+                <form method="post" action="register_pro.php">
                     <div class="text-center">
                         <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
                         <p class="text">Please enter your details</p>
+                        <?php 
+                           if(isset($_GET['error'])){
+                            echo "<p style='color:red'><b>".$_GET['error']."</b></p>";
+                        }
+                        ?>
                     </div>
                     <div class="p-3 form-group"">
                         <div class=" mb-3">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control form-control-lg" placeholder="Enter your Name" />
+                        <input type="text" class="form-control form-control-lg" name="name"
+                            placeholder="Enter your Name" required />
                     </div>
                     <div class=" mb-3">
-                        <label class="form-label">Username</label>
-                        <input type="text" class="form-control form-control-lg" placeholder="Enter your Email" />
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control form-control-lg" name="email"
+                            placeholder="Enter your Email" required />
                     </div>
                     <div class=" mb-3">
                         <label class="form-label">Mobile</label>
-                        <input type="text" class="form-control form-control-lg" placeholder="Enter your Email" />
+                        <input type="text" class="form-control form-control-lg" name="mobile"
+                            placeholder="Enter your Mobile Number" required />
                     </div>
                     <div class=" mb-3">
                         <label class="form-label">Password</label>
-                        <input type="text" class="form-control form-control-lg" placeholder="Enter Password" />
+                        <input type="password" class="form-control form-control-lg" name="password"
+                            placeholder="Enter Password" />
                     </div>
                     <div class=" mb-3">
                         <label class="form-label">Confirm Password</label>
-                        <input type="text" class="form-control form-control-lg" placeholder="Enter Confirm Password" />
+                        <input type="password" class="form-control form-control-lg" name="cpassword"
+                            placeholder="Enter Confirm Password" required />
                     </div>
                     <div class="d-flex justify-content-around align-items-center mb-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                            <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked
+                                required />
                             <label class="form-check-label" for="form1Example3"> I agree all statements in <a
                                     href="#!">Terms of service</a></label>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-block mb-4" type="submit">Register</button>
+                    <button class="btn btn-primary btn-block mb-4" type="submit" name="register">Register</button>
                     <p class="mt-2 pt-1 mb-0">Do you have an account?
                         <a href="index.php" class="link-danger">Login</a>
                     </p>
