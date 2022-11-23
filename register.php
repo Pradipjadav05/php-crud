@@ -16,13 +16,13 @@
     <div class="container-fluid py-2 h-100">
         <div class="row align-items-center justify-content-center">
             <div class="col-md-6">
-                <form method="post" action="register_pro.php">
+                <form method="post" role="form">
                     <div class="text-center">
                         <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
                         <p class="text">Please enter your details</p>
                         <?php 
                            if(isset($_GET['error'])){
-                            echo "<p style='color:red'><b>".$_GET['error']."</b></p>";
+                            echo "<p style='color:red' id='error'><b>".$_GET['error']."</b></p>";
                         }
                         ?>
                     </div>
@@ -60,7 +60,7 @@
                                     href="#!">Terms of service</a></label>
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-block mb-4" type="submit" name="register">Register</button>
+                    <button type="submit" name="register" class="btn btn-primary btn-block mb-4">Register</button>
                     <p class="mt-2 pt-1 mb-0">Do you have an account?
                         <a href="index.php" class="link-danger">Login</a>
                     </p>
@@ -80,3 +80,29 @@
 </body>
 
 </html>
+<?php
+    include_once 'db.php';
+    if(isset($_POST['register'])){
+        if($_POST['password'] == $_POST['cpassword']){
+            $sql = "insert into user(Name,Email,Mobile,Password) values('".$_POST['name']."','".$_POST['email']."','".$_POST['mobile']."','".$_POST['password']."')";
+            // echo $sql;
+            $res = mysqli_query($conn,$sql);
+            // $res=$conn->query($sql);
+            if($res){
+                // echo "<script>alert('Record inserted...')</script>";
+                // echo("<script>>window.location.href = 'index.php';</script>");
+                header("Location:index.php");
+            }
+            else{
+                echo "<script>alert('Something wrong...')</script>";
+            }
+        }
+        else{
+            echo "<script>alert('Do no match Password and Confirm Password.')</script>";
+
+            // echo "<script> 
+            // document.getElementById('error').innerHTML = 'Do no match Password and Confirm Password.';
+            // </script>";
+        }
+    }
+?>
