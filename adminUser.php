@@ -2,7 +2,9 @@
     session_start();
     include_once 'db.php';
     if($_SESSION['uname'] != null){
-        
+        // $query = "select * from user where id = '".$_SESSION['id']."'";
+        $query = "select * from user";
+        $res = mysqli_query($conn,$query);
         
 ?>
 <!DOCTYPE html>
@@ -12,6 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <title>Document</title>
@@ -19,12 +22,7 @@
 
 <body>
     <h1>Welcome...</h1>
-    <?php
-        echo 'Id : '.$_SESSION['id'].'<br>';
-        echo 'Name : '.$_SESSION['uname'].'<br>';
-        echo 'Email : '.$_SESSION['email'].'<br>';
-        echo 'Mobile : '.$_SESSION['mobile'].'<br>';
-    ?>
+
 
 
     <a href="logout.php"><button>Logout</button></a>
@@ -37,11 +35,9 @@
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>Password</th>
+                <th colspan=2>Manage</th>
             </tr>
             <?php
-                // $query = "select * from user where id = '".$_SESSION['id']."'";
-                $query = "select * from user";
-                $res = mysqli_query($conn,$query);
                 if(mysqli_num_rows($res)>0){
                     while($data = mysqli_fetch_array($res)){
             
@@ -52,6 +48,9 @@
                 <td><?php echo $data['Email']; ?></td>
                 <td><?php echo $data['Mobile']; ?></td>
                 <td><?php echo $data['Password']; ?></td>
+                <td><i class="fa fa-pencil" style="font-size:24px;color:green"></i></td>
+                <td><i class="fa fa-trash" style="font-size:24px;color:red"></i></td>
+
             </tr>
             <?php
                 
