@@ -14,7 +14,7 @@
         // }
         if($_POST['uname'] == "admin" && $_POST['password'] == "admin"){
                 $_SESSION['uname'] = $_POST['uname'];
-                header("Location:adminUser.php");
+                header("Location:./admin/adminUser.php");
         }
         else{
             $sql = "select * from user where Email = '".$_POST['uname']."' and Password = '".$_POST['password']."'";

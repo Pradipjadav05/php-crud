@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once 'db.php';
+    include_once '../db.php';
     if($_SESSION['uname'] != null && $_SESSION['uname']=='admin'){
        
         
@@ -23,7 +23,7 @@
 
 
 
-    <a href="logout.php"><button>Logout</button></a>
+    <a href="../logout.php"><button>Logout</button></a>
     <hr>
     <div class="row d-flex justify-content-around mt-5">
         <form class="form-group" method="post">
@@ -94,7 +94,8 @@
                 <td><?php echo $data['Password']; ?></td>
                 <td><a href="adminUpdateUser.php?id=<?php echo $data['id']; ?>"><i class="fa fa-pencil"
                             style="font-size:24px;color:green"></i></a></td>
-                <td><a href=""><i class="fa fa-trash" style="font-size:24px;color:red"></i></a></td>
+                <td><a href="adminDeleteUser.php?id=<?php echo $data['id']; ?>"><i class="fa fa-trash"
+                            style="font-size:24px;color:red"></i></a></td>
 
             </tr>
             <?php
@@ -118,7 +119,7 @@
 <?php
     }
     else{
-        header("Location:index.php");
+        header("Location:../index.php");
         exit();
     }
 

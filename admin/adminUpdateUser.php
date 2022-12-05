@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once 'db.php';
+    include_once '../db.php';
     if($_SESSION['uname'] != null && $_SESSION['uname']=='admin'){
         $id = $_GET['id'];
         $sql = "Select * from user where id =$id";
