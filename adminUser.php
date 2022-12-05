@@ -1,10 +1,8 @@
 <?php
     session_start();
     include_once 'db.php';
-    if($_SESSION['uname'] != null){
-        // $query = "select * from user where id = '".$_SESSION['id']."'";
-        $query = "select * from user";
-        $res = mysqli_query($conn,$query);
+    if($_SESSION['uname'] != null && $_SESSION['uname']=='admin'){
+       
         
 ?>
 <!DOCTYPE html>
@@ -26,7 +24,36 @@
 
 
     <a href="logout.php"><button>Logout</button></a>
-
+    <hr>
+    <div class="row d-flex justify-content-around mt-5">
+        <form class="form-group" method="post">
+            <div class="d-inline-block">
+                <label class="form-label">Name : </label>
+            </div>
+            <div class="d-inline-block">
+                <input type="text" class="form-control" name="name" placeholder="Enter Name">
+            </div>
+            <div class="d-inline-block">
+                <input class="btn btn-primary ml-3" type="submit" value="Find" name="find">
+            </div>
+        </form>
+        <form class="form-group" method="post">
+            <div class="d-inline-block">
+                <label class="form-label">Sort By:</label>
+            </div>
+            <div class="d-inline-block">
+                <select class="form-control" name="filter">
+                    <option value="null">--SELECT--</option>
+                    <option value="id">ID</option>
+                    <option value="Name">Name</option>
+                    <option value="Email">Email</option>
+                </select>
+            </div>
+            <div class="d-inline-block">
+                <input class="btn btn-primary ml-3" type="submit" value="sort" name="sort">
+            </div>
+        </form>
+    </div>
     <div class="container">
         <table class="table table-border table-hover">
             <tr>
@@ -38,6 +65,21 @@
                 <th colspan=2>Manage</th>
             </tr>
             <?php
+                if(isset($_POST['sort'])){
+                    $cat = $_POST['filter'];
+                    // echo $greating;
+                    $query = "select * from user order by $cat";
+                    
+                }
+                elseif(isset($_POST['find'])){
+                    $name = $_POST['name'];
+                    $query = "select * from user where Name like '%$name%'";
+
+                }
+                else{
+                    $query = "select * from user";
+                }
+                $res = mysqli_query($conn,$query);
                 if(mysqli_num_rows($res)>0){
                     while($data = mysqli_fetch_array($res)){
             
@@ -48,8 +90,9 @@
                 <td><?php echo $data['Email']; ?></td>
                 <td><?php echo $data['Mobile']; ?></td>
                 <td><?php echo $data['Password']; ?></td>
-                <td><i class="fa fa-pencil" style="font-size:24px;color:green"></i></td>
-                <td><i class="fa fa-trash" style="font-size:24px;color:red"></i></td>
+                <td><a href="adminUpdateUser.php?id=<?php echo $data['id']; ?>"><i class="fa fa-pencil"
+                            style="font-size:24px;color:green"></i></a></td>
+                <td><a href=""><i class="fa fa-trash" style="font-size:24px;color:red"></i></a></td>
 
             </tr>
             <?php
