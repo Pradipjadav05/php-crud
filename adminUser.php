@@ -43,7 +43,7 @@
             </div>
             <div class="d-inline-block">
                 <select class="form-control" name="filter">
-                    <option value="null">--SELECT--</option>
+                    <option value="id">--SELECT--</option>
                     <option value="id">ID</option>
                     <option value="Name">Name</option>
                     <option value="Email">Email</option>
@@ -79,6 +79,8 @@
                 else{
                     $query = "select * from user";
                 }
+                // $query = "select * from user";
+
                 $res = mysqli_query($conn,$query);
                 if(mysqli_num_rows($res)>0){
                     while($data = mysqli_fetch_array($res)){

@@ -56,7 +56,7 @@
                     </tr>
                     <tr>
                         <td colspan=2 class="text-center">
-                            <input type="submit" class="btn btn-lg bg-danger mr-5" value="Reset" name="update">
+                            <input type="submit" class="btn btn-lg bg-danger mr-5" value="Reset" name="reset">
                             <input type="submit" class="btn btn-lg bg-success" value="Update" name="update">
                         </td>
                     </tr>
@@ -75,9 +75,22 @@
 
 </html>
 <?php
-    // if(isset($_POST['update'])){
-    //     echo $_POST['name'];
-    // }
+    if(isset($_POST['update'])){
+        // echo $_POST['name'];
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $mobile = $_POST['mobile'];
+        $sql = "update user set Name = '$name', Email = '$email', Mobile='$mobile' where id= '$id'";
+        // echo $sql;
+        $res = mysqli_query($conn,$sql);
+        if($res){
+            // echo "<script>alert('Record updated...')</script>";
+            header("Location:adminUser.php");
+        }
+        else{
+            echo "<script>alert('Something went worng...')</script>";
+        }
+    }
 }
 else{
     header("Location:index.php");
