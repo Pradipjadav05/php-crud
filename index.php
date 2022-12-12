@@ -1,3 +1,20 @@
+<?php
+    // if(isset($_COOKIE['nm'])){
+    //     // include 'db.php';
+    //     // $sql = "select * from user where Email = '".$_COOKIE['nm']."' and Password = '".$_COOKIE['pss']."'";
+    //     // $res = mysqli_query($conn,$sql);
+    //     // if(mysqli_num_rows($res)>0){
+    //     //     $data = mysqli_fetch_array($res);
+    //     //     $_SESSION['id'] = $data['id'];
+    //     //     $_SESSION['uname'] = $data['Name'];
+    //     //     $_SESSION['email'] = $data['Email'];
+    //     //     $_SESSION['mobile'] = $data['Mobile'];
+    //     // }
+    //     // header('Location:home.php');
+    // }
+    // else{
+        
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,19 +50,21 @@
                         <div class=" mb-4">
                         <label class="form-label">Username</label>
                         <input type="text" class="form-control form-control-lg" name="uname"
-                            placeholder="Enter your Email" />
+                            placeholder="Enter your Email"
+                            value="<?php echo isset($_COOKIE['nm'])? $_COOKIE['nm']:""; ?>" />
                     </div>
 
                     <div class=" mb-4">
                         <label class="form-label">Password</label>
                         <input type="password" class="form-control form-control-lg" name="password"
-                            placeholder="Enter Password" />
+                            placeholder="Enter Password"
+                            value="<?php echo isset($_COOKIE['pss'])? $_COOKIE['pss']:""; ?>" />
                     </div>
                     <div class="d-flex justify-content-around align-items-center mb-4">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="remember" id="form1Example3"
-                                checked />
-                            <label class="form-check-label" for="form1Example3"> Remember me </label>
+                            <input class="form-check-input" type="checkbox" value="true" name="remember"
+                                id="chkRemember" checked />
+                            <label class="form-check-label" for="chkRemember"> Remember me </label>
                         </div>
                         <a href="#!">Forgot password?</a>
                     </div>
@@ -68,3 +87,6 @@
 </body>
 
 </html>
+<?php
+// }
+?>

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include_once 'db.php';
+    
     if($_SESSION['uname'] != null){
         
         
@@ -26,7 +27,19 @@
         echo 'Mobile : '.$_SESSION['mobile'].'<br>';
     ?>
 
+    <br>
+    <br>
+    <br>
+    <h1>Cookies values:</h1>
+    <label>Name : </label>
+    <?php echo isset($_COOKIE['nm'])? $_COOKIE['nm']:""; ?>
+    <br>
 
+    <label>Password : </label>
+    <?php echo isset($_COOKIE['pss'])? $_COOKIE['pss']:""; ?>
+    <br>
+    <br>
+    <br>
     <a href="logout.php"><button>Logout</button></a>
 
     <div class="container">

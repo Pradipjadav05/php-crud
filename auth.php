@@ -1,5 +1,6 @@
 <?php
     session_start();
+    
     include_once 'db.php';
     if(isset($_POST['submit'])){
         // echo $_POST['uname'];
@@ -12,6 +13,7 @@
         // else{
         //     header("Location:index.php?error=Incorrect username and password");
         // }
+        
         if($_POST['uname'] == "admin" && $_POST['password'] == "admin"){
                 $_SESSION['uname'] = $_POST['uname'];
                 header("Location:./admin/adminUser.php");
@@ -25,6 +27,10 @@
                 $_SESSION['uname'] = $data['Name'];
                 $_SESSION['email'] = $data['Email'];
                 $_SESSION['mobile'] = $data['Mobile'];
+                if(isset($_POST['remember'])){
+                    setcookie("nm",$data['Email'],time()+(10),"/");
+                    setcookie("pss",$data['Password'],time()+(10),"/");
+                }
                 header("Location:home.php");
             }
             else{

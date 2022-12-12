@@ -52,7 +52,7 @@
                     <tr>
                         <td>Password</td>
                         <td><input type="text" class="form-control" name="password"
-                                value="<?php echo $data['Password']; ?>"></td>
+                                value="<?php echo $data['Password']; ?>" readonly></td>
                     </tr>
                     <tr>
                         <td colspan=2 class="text-center">
