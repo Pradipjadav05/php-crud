@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/js/bootstrap.min.js">
     <link rel="stylesheet" href="assets/js/bootstrap.bundle.min.js">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Register Page</title>
 </head>
 
@@ -16,7 +18,7 @@
     <div class="container-fluid py-2 h-100">
         <div class="row align-items-center justify-content-center">
             <div class="col-md-6">
-                <form action="register_pro.php" method="post" role="form" enctype="multipart/form-data">
+                <form id="myForm" action="register_pro.php" method="post" role="form" enctype="multipart/form-data">
                     <div class="text-center">
                         <h2 class="fw-bold mb-2 text-uppercase">Sign Up</h2>
                         <p class="text">Please enter your details</p>
@@ -28,40 +30,47 @@
                     </div>
                     <div class="p-3 form-group">
                         <div class=" mb-3">
-                            <label class="form-label">Name</label>
-                            <input type="text" class="form-control form-control-lg" name="name"
-                                placeholder="Enter your Name" required />
+                            <label class="form-label" for="name">Name</label>
+                            <input type="text" class="form-control form-control-lg" id="name" name="name"
+                                placeholder="Enter your Name" />
                         </div>
                         <div class=" mb-3">
-                            <label class="form-label">Email</label>
-                            <input type="email" class="form-control form-control-lg" name="email"
-                                placeholder="Enter your Email" required />
+                            <label class="form-label" for="email">Email</label>
+                            <input type="email" class="form-control form-control-lg" id="email" name="email"
+                                placeholder="Enter your Email" />
+
                         </div>
                         <div class=" mb-3">
-                            <label class="form-label">Mobile</label>
-                            <input type="text" class="form-control form-control-lg" name="mobile"
-                                placeholder="Enter your Mobile Number" required />
+                            <label class="form-label" for="mobile">Mobile</label>
+                            <input type="text" class="form-control form-control-lg" id="mobile" name="mobile"
+                                placeholder="Enter your Mobile Number" />
+
                         </div>
                         <div class=" mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" class="form-control form-control-lg" name="password"
-                                placeholder="Enter Password" required />
+                            <label class="form-label" for="password">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="password" name="password"
+                                placeholder="Enter Password" />
+
                         </div>
                         <div class=" mb-3">
-                            <label class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control form-control-lg" name="cpassword"
-                                placeholder="Enter Confirm Password" required />
+                            <label class="form-label" for="cpassword">Confirm Password</label>
+                            <input type="password" class="form-control form-control-lg" id="cpassword" name="cpassword"
+                                placeholder="Enter Confirm Password" />
+
                         </div>
                         <div class="mb-3">
-                            <label for="formFile" class="form-label">Profile Photo</label>
-                            <input class="form-control-lg" type="file" id="formFile" name="profilePhoto" required>
+                            <label for="profilePhoto" class="form-label">Profile Photo</label>
+                            <input class="form-control-lg" type="file" id="profilePhoto" name="profilePhoto">
+
                         </div>
                         <div class="d-flex justify-content-around align-items-center mb-4">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked
-                                    required />
-                                <label class="form-check-label" for="form1Example3"> I agree all statements in <a
-                                        href="#!">Terms of service</a></label>
+                                <input class="form-check-input" type="checkbox" value="" id="form1Example3"
+                                    name="tearms" checked />
+                                <label class="form-check-label" for="form1Example3"> I agree all
+                                    statements in <a href="#!">Terms of service</a></label><br>
+                                <label for="tearms" class="error"></label>
+
                             </div>
                         </div>
                         <button type="submit" name="register" class="btn btn-primary btn-block mb-4">Register</button>
@@ -81,6 +90,53 @@
             <img src="images/login.png" class="img-fluid">
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+        integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+    jQuery("#myForm").validate({
+        rules: {
+            "name": "required",
+            "email": {
+                "required": true,
+                "email": true
+            },
+            "mobile": "required",
+            "password": {
+                "required": true,
+                "minlength": 6,
+            },
+            "cpassword": {
+                "required": true,
+                "minlength": 6,
+            },
+            "profilePhoto": "required",
+            "tearms": "required"
+        },
+        messages: {
+            "name": "Please enter Username",
+            "email": {
+                "required": "Please enter Email Id.",
+                "email": "Please enter Valied Email Id."
+            },
+            "mobile": "Please enter mobile number.",
+            "password": {
+                "required": "Please enter Password.",
+                "minlength": "Password must be 6 characters."
+            },
+            "cpassword": {
+                "required": "Please enter Confirm Password.",
+                "minlength": "Password must be 6 characters."
+            },
+            "profilePhoto": "Please select Profile Photo.",
+            "tearms": "Accept the Tearms and Condition."
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    </script>
 </body>
 
 </html>

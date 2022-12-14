@@ -39,3 +39,6 @@
     animation-name: fadeInUp;
     -webkit-animation-name: fadeInUp;
 }
+.error{
+    color: red;
+}
