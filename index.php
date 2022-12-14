@@ -38,7 +38,7 @@
                 <img src="images/login.png" class="img-fluid">
             </div>
             <div class="col col-md-6">
-                <form id="myForm" action="" method="post" role="form">
+                <form id="myForm" action="auth.php" method="post" role="form">
                     <div class="text-center">
                         <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
                         <p class="text">Please enter your login and password!</p>

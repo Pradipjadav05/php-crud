@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once '../db.php';
-    if($_SESSION['uname'] != null && $_SESSION['uname']=='admin'){
+    if($_SESSION['uname'] != null && $_SESSION['uname']=='admin@gmail.com'){
         $id = $_GET['id'];
         $sql = "Select * from user where id =$id";
         // echo $sql;

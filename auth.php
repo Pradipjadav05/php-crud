@@ -14,7 +14,7 @@
         //     header("Location:index.php?error=Incorrect username and password");
         // }
         
-        if($_POST['uname'] == "admin" && $_POST['password'] == "admin"){
+        if($_POST['uname'] == "admin@gmail.com" && $_POST['password'] == "admin123"){
                 $_SESSION['uname'] = $_POST['uname'];
                 header("Location:./admin/adminUser.php");
         }
