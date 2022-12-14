@@ -66,7 +66,7 @@
                                 id="chkRemember" checked />
                             <label class="form-check-label" for="chkRemember"> Remember me </label>
                         </div>
-                        <a href="#!">Forgot password?</a>
+                        <a href="forgatePassword.php">Forgot password?</a>
                     </div>
                     <button class="btn btn-primary btn-block mb-4" type="submit" name="submit">Login</button>
                     <p class="mt-2 pt-1 mb-0">Don't have an account?

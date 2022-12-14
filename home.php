@@ -3,7 +3,12 @@
     include_once 'db.php';
     
     if($_SESSION['uname'] != null){
-        
+        $query = "select * from user where id = '".$_SESSION['id']."'";
+        // $query = "select * from user";
+        $res = mysqli_query($conn,$query);
+        if(mysqli_num_rows($res)>0){
+            $data = mysqli_fetch_array($res);
+        }
         
 ?>
 <!DOCTYPE html>
@@ -41,8 +46,12 @@
     <br>
     <br>
     <a href="logout.php"><button>Logout</button></a>
+    <div class="text-center">
 
-    <div class="container">
+        <img class="img-fluid" src="<?php echo $data['Photo']; ?>"
+            style="border:2px solid black;  border-radius: 100%; height:250px; width:250px;">
+    </div>
+    <div class=" container">
         <table class="table table-border table-hover">
             <tr>
                 <th>Id</th>
@@ -52,12 +61,7 @@
                 <th>Password</th>
             </tr>
             <?php
-                // $query = "select * from user where id = '".$_SESSION['id']."'";
-                $query = "select * from user";
-                $res = mysqli_query($conn,$query);
-                if(mysqli_num_rows($res)>0){
-                    while($data = mysqli_fetch_array($res)){
-            
+                
             ?>
             <tr>
                 <td><?php echo $data['id']; ?></td>
@@ -66,11 +70,6 @@
                 <td><?php echo $data['Mobile']; ?></td>
                 <td><?php echo $data['Password']; ?></td>
             </tr>
-            <?php
-                
-                }
-            }
-            ?>
         </table>
     </div>
 
