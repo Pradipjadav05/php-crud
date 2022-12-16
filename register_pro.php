@@ -36,7 +36,7 @@
                 if($res){
                     // echo "<script>alert('Record inserted...')</script>";
                     // echo("<script>>window.location.href = 'index.php';</script>");
-                    header("Location:index.php");
+                    header("Location:index.php?error=Regiser succesfully.");
                 }
                 else{
                     echo "<script>alert('Something wrong...')</script>";
